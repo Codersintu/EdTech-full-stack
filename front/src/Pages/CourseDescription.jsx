@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import {HomeLayout} from '../LayOut/HomeLayout'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 export function CourseDescription(props) {
+    const navigate=useNavigate()
     const {state,data}=useLocation();
     const { role }=useSelector((state)=>state.auth)
     console.log("role:",role)
@@ -25,10 +26,10 @@ export function CourseDescription(props) {
                         <p className='font-semibold'><span className='text-yellow-300'>Total lectures : {" "}</span> {state?.numbersoflectures}</p>
                         <p className='font-semibold'><span className='text-yellow-500'>Instruction : {" "}</span> {state?.createdBy}</p>
                     </div>
-                    {role === "ADMIN" || data?.subscription?.status === "ACTIVE" ? (
-                        <button className='!bg-amber-400 text-white rounded-md !font-semibold !px-5 !py-3 w-full !text-xl'>Watch lecture</button>
+                    {role === "ADMIN" || data?.subscription?.status === "active" ? (
+                        <button   onClick={() => navigate("/course/displaylectures", {state: {...state}})} className='!bg-amber-400 text-white rounded-md !font-semibold !px-5 !py-3 w-full !text-xl'>Watch lecture</button>
                     ) : (
-                        <button className='!bg-amber-400 text-white rounded-md !font-semibold !px-5 !py-3 w-full !text-xl'>Subscribe</button>
+                        <button onClick={()=>navigate('/checkout')} className='!bg-amber-400 text-white rounded-md !font-semibold !px-5 !py-3 w-full !text-xl'>Subscribe</button>
                     )
                     }
                 </div>

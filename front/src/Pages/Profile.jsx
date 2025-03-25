@@ -24,7 +24,7 @@ export function Profile(props) {
 
              <div className="flex items-center justify-center gap-2">
                 <Link to='/changepassword' className='!bg-amber-400 text-center w-1/2 transition-all ease-in-out hover:bg-amber-900 !rounded-lg font-semibold p-3'>change password</Link>
-                <Link to='editprofile' className='!bg-amber-300 w-1/2 text-center !rounded-lg font-semibold p-3'>Edit Profile</Link>
+                <Link to='/editProfile' className='!bg-amber-300 w-1/2 text-center !rounded-lg font-semibold p-3'>Edit Profile</Link>
              </div>
               {userData?.subscription?.status === 'active' && (
                 <button className='w-full bg-red-600 hover:bg-red-500'>Cancel Subscription</button>

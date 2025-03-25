@@ -14,6 +14,8 @@ import { CourseDescription } from './Pages/CourseDescription'
 import { RequireAuth } from './Pages/RequireAuth'
 import {CreateCourse} from './Pages/CreateCourse'
 import { Profile } from './Pages/Profile'
+import { EditProfile } from './Pages/EditProfile'
+import { CheckOut } from './Pages/CheckOut'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,6 +36,12 @@ function App() {
         <Route element={<RequireAuth  allowedRoles={["ADMIN"]}/>}>
         <Route path='/course/create' element={<CreateCourse/>}/>
         </Route>
+
+        <Route element={<RequireAuth allowedRoles={["ADMIN","USER"]} />}>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/editProfile' element={<EditProfile/>}/>
+        </Route>
+        <Route path='/checkout' element={<CheckOut/>}/>
       </Routes>
       </div>
   )
